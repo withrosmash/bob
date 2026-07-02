@@ -154,7 +154,9 @@ body {
   margin-bottom: 6px;
 }
 
-.card p { font-size: 14.5px; color: var(--ink-dim); }
+/* :where() keeps this at zero specificity so classed paragraphs
+   (.report-label, .q-text, .score-big, …) aren't clobbered. */
+:where(.card) :where(p) { font-size: 14.5px; color: var(--ink-dim); }
 
 .card .source {
   display: inline-block;
