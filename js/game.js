@@ -199,7 +199,7 @@ async function loadGame(container) {
       state.done = false;
     } catch (err) {
       if (err instanceof AuthError) {
-        container.innerHTML = needsKeyCard();
+        container.innerHTML = needsKeyCard(true);
       } else {
         container.innerHTML = errorCard(`Couldn't set today's quiz. ${err.message}`, 'game-retry');
         document.getElementById('game-retry')?.addEventListener('click', () => loadGame(container));

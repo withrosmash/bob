@@ -45,14 +45,14 @@ async function loadPulse(container, force = false) {
     const cached = getDailyCache(FEATURE);
     if (cached) { renderPulse(container, cached); return; }
   }
-  container.innerHTML = loadingCard('Gathering signals across the sector…');
+  container.innerHTML = loadingCard('Gathering signals across the sector… (searches take up to a minute)');
   try {
     const items = await fetchPulse();
     setDailyCache(FEATURE, items);
     renderPulse(container, items);
   } catch (err) {
     if (err instanceof AuthError) {
-      container.innerHTML = needsKeyCard();
+      container.innerHTML = needsKeyCard(true);
     } else {
       container.innerHTML = errorCard(`Couldn't gather the pulse. ${err.message}`, 'pulse-retry');
       document.getElementById('pulse-retry')?.addEventListener('click', () => loadPulse(container, true));

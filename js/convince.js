@@ -76,7 +76,7 @@ async function load(container, force = false, rerolls = 0) {
     renderSuggestion(container, suggestion);
   } catch (err) {
     if (err instanceof AuthError) {
-      container.innerHTML = needsKeyCard();
+      container.innerHTML = needsKeyCard(true);
     } else {
       container.innerHTML = errorCard(`Bob lost his train of thought. ${err.message}`, 'convince-retry');
       document.getElementById('convince-retry')?.addEventListener('click', () => load(container, true, rerolls));

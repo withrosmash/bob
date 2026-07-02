@@ -51,14 +51,14 @@ async function loadGoodNews(container, force = false) {
     const cached = getDailyCache(FEATURE);
     if (cached) { renderStories(container, cached); return; }
   }
-  container.innerHTML = loadingCard('Bob is scanning for good news…');
+  container.innerHTML = loadingCard('Bob is scanning for good news… (searches take up to a minute)');
   try {
     const stories = await fetchGoodNews();
     setDailyCache(FEATURE, stories);
     renderStories(container, stories);
   } catch (err) {
     if (err instanceof AuthError) {
-      container.innerHTML = needsKeyCard();
+      container.innerHTML = needsKeyCard(true);
     } else {
       container.innerHTML = errorCard(`Couldn't fetch good news. ${err.message}`, 'goodnews-retry');
       document.getElementById('goodnews-retry')?.addEventListener('click', () => loadGoodNews(container, true));
