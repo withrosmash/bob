@@ -1,6 +1,6 @@
 /* Bob service worker — offline app shell, network passthrough for APIs. */
 
-const CACHE = 'bob-v1';
+const CACHE = 'bob-v2';
 
 const SHELL = [
   './',
