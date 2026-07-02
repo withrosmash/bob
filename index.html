@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0c0d10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bob">
+  <title>Bob — Daily Intelligence</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="wordmark">
+      <span class="wordmark-name">BOB</span>
+      <span class="wordmark-tag">Daily Intelligence</span>
+    </div>
+    <button class="icon-btn" id="settings-btn" aria-label="Settings" title="Settings">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="3.2"/>
+        <path d="M19.4 15a1.6 1.6 0 0 0 .32 1.77l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.6 1.6 0 0 0-1.77-.32 1.6 1.6 0 0 0-.97 1.47V21a2 2 0 1 1-4 0v-.09a1.6 1.6 0 0 0-1.05-1.47 1.6 1.6 0 0 0-1.77.32l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.6 1.6 0 0 0 .32-1.77 1.6 1.6 0 0 0-1.47-.97H3a2 2 0 1 1 0-4h.09a1.6 1.6 0 0 0 1.47-1.05 1.6 1.6 0 0 0-.32-1.77l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.6 1.6 0 0 0 1.77.32h.08a1.6 1.6 0 0 0 .97-1.47V3a2 2 0 1 1 4 0v.09a1.6 1.6 0 0 0 .97 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.6 1.6 0 0 0-.32 1.77v.08a1.6 1.6 0 0 0 1.47.97H21a2 2 0 1 1 0 4h-.09a1.6 1.6 0 0 0-1.47.97z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="app-main">
+
+    <!-- ============ DAILY BRIEFING ============ -->
+    <section class="panel active" id="panel-briefing" data-panel="briefing">
+      <div class="brief-head">
+        <p class="report-label">Daily Brief · Eyes Only</p>
+        <h1 class="greeting" id="greeting">Hello, Spencer</h1>
+        <p class="date-line" id="date-line"></p>
+      </div>
+
+      <div class="card weather-card" id="weather-card">
+        <p class="report-label">Conditions · Canary Wharf</p>
+        <div class="weather-body" id="weather-body">
+          <p class="muted">Checking the sky…</p>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <p class="report-label">Good News Only</p>
+        <button class="icon-btn small refresh-btn" id="goodnews-refresh" aria-label="Refresh good news" title="Refresh">↻</button>
+      </div>
+      <div id="goodnews-body"></div>
+    </section>
+
+    <!-- ============ SECTOR PULSE ============ -->
+    <section class="panel" id="panel-pulse" data-panel="pulse">
+      <div class="brief-head">
+        <p class="report-label">Sector Pulse</p>
+        <h1 class="panel-title">The Signal</h1>
+        <p class="panel-sub">International higher education · EdTech · UK visas &amp; immigration</p>
+      </div>
+      <div class="section-head">
+        <p class="report-label" id="pulse-stamp">Today's intel</p>
+        <button class="icon-btn small refresh-btn" id="pulse-refresh" aria-label="Refresh pulse" title="Refresh">↻</button>
+      </div>
+      <div id="pulse-body"></div>
+    </section>
+
+    <!-- ============ CONVINCE ME ============ -->
+    <section class="panel" id="panel-convince" data-panel="convince">
+      <div class="brief-head">
+        <p class="report-label">Field Assignment</p>
+        <h1 class="panel-title">Convince Me</h1>
+        <p class="panel-sub">One unexpected thing to do today. Not wellness. Bob insists.</p>
+      </div>
+      <div id="convince-body"></div>
+    </section>
+
+    <!-- ============ DAILY GAME ============ -->
+    <section class="panel" id="panel-game" data-panel="game">
+      <div class="brief-head">
+        <p class="report-label">Bob's Daily Game</p>
+        <h1 class="panel-title" id="game-title">Five Questions</h1>
+        <p class="panel-sub" id="game-sub">A fresh round every day.</p>
+      </div>
+      <div id="game-body"></div>
+    </section>
+
+    <!-- ============ CALENDAR ============ -->
+    <section class="panel" id="panel-calendar" data-panel="calendar">
+      <div class="brief-head">
+        <p class="report-label">Schedule</p>
+        <h1 class="panel-title">Calendar</h1>
+        <p class="panel-sub">Today and the week ahead.</p>
+      </div>
+      <div id="calendar-body"></div>
+    </section>
+
+  </main>
+
+  <nav class="tab-bar" role="tablist">
+    <button class="tab active" data-tab="briefing" role="tab" aria-selected="true">
+      <span class="tab-icon">☀</span><span class="tab-label">Brief</span>
+    </button>
+    <button class="tab" data-tab="pulse" role="tab" aria-selected="false">
+      <span class="tab-icon">◉</span><span class="tab-label">Pulse</span>
+    </button>
+    <button class="tab" data-tab="convince" role="tab" aria-selected="false">
+      <span class="tab-icon">✦</span><span class="tab-label">Convince</span>
+    </button>
+    <button class="tab" data-tab="game" role="tab" aria-selected="false">
+      <span class="tab-icon">?</span><span class="tab-label">Game</span>
+    </button>
+    <button class="tab" data-tab="calendar" role="tab" aria-selected="false">
+      <span class="tab-icon">▦</span><span class="tab-label">Diary</span>
+    </button>
+  </nav>
+
+  <!-- ============ API KEY MODAL ============ -->
+  <div class="modal-backdrop hidden" id="key-modal">
+    <div class="modal">
+      <p class="report-label">Clearance Required</p>
+      <h2>Welcome to Bob</h2>
+      <p>Bob briefs you using Claude. Paste your Anthropic API key to get started — it's stored only on this device.</p>
+      <input type="password" id="key-input" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
+      <p class="field-error hidden" id="key-error"></p>
+      <button class="btn primary" id="key-save">Start briefing</button>
+      <p class="fine-print">Get a key at console.anthropic.com → API keys. Stored in localStorage on this device only.</p>
+    </div>
+  </div>
+
+  <!-- ============ SETTINGS MODAL ============ -->
+  <div class="modal-backdrop hidden" id="settings-modal">
+    <div class="modal">
+      <div class="modal-head">
+        <p class="report-label">Settings</p>
+        <button class="icon-btn small" id="settings-close" aria-label="Close">✕</button>
+      </div>
+      <label class="field-label" for="settings-key">Anthropic API key</label>
+      <input type="password" id="settings-key" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
+      <label class="field-label" for="settings-gcid">Google OAuth Client ID <span class="muted">(for Calendar)</span></label>
+      <input type="text" id="settings-gcid" placeholder="1234…apps.googleusercontent.com" autocomplete="off" spellcheck="false">
+      <button class="btn primary" id="settings-save">Save</button>
+      <p class="fine-print">Both values live in localStorage on this device only. Calendar setup steps are in the README.</p>
+    </div>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
